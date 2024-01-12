@@ -21,14 +21,13 @@
     <script type="text/javascript">
         var cache = window.applicationCache;
 
-        cache.addEventListener('updateready', function(e) {
-            if (cache.status == 4) {
-                cache.swapCache();
-                if (confirm('recarreguem?')) {
-                    window.location.reload();
-                }
-            }
-        });
+        cache.addEventListener("visibilitychange", function () {
+            console.log("Visibility changed");
+            if (document.visibilityState === "visible") {
+                console.log("APP resumed");
+                window.location.reload();
+      }
+    });
     </script>
 </head>
 
